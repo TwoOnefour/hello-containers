@@ -1,4 +1,6 @@
-class MyBackend extends Container {
+import { Container, getRandom } from '@cloudflare/containers';
+
+class MyContainer extends Container {
   defaultPort = 5244;
   autoscale = true; // global autoscaling on - new instances spin up when memory or CPU utilization is high
 }
@@ -6,6 +8,6 @@ class MyBackend extends Container {
 // routes requests to the nearest ready container and load balance globally
 export default {
     async fetch(request, env) {
-        return getContainer(env.MyContainer).fetch(request);
+        return env.MyContainer.fetch(request);
     }
 }
