@@ -6,6 +6,6 @@ class MyBackend extends Container {
 // routes requests to the nearest ready container and load balance globally
 export default {
     async fetch(request, env) {
-        return getContainer(env.MY_BACKEND).fetch(request);
+        return getContainer(env.MyContainer).fetch(request);
     }
 }
